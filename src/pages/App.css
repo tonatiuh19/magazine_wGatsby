@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+.content {
+  padding-top: 60px;
+}
+
+.centerLoading {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+#outer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+#inner {
+  margin: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  position: sticky;
+  top: 0;
+}
+
+main {
+  flex: 1;
+}
+
+.footerLinks {
+  font-size: 0.8rem;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.post-card:hover {
+  border: 2px solid #3E7DC0;
+}
+
+
+.socialNetworkPost:hover {
+  border: 1px solid #ffffff;
+}
+
+.nameAuthorPost:hover {
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.card-img-top-post {
+  max-height: 400px;
+  min-height: 350px;
+  object-fit: cover;
+}
