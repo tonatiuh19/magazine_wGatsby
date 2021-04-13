@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import SEO from "../components/seo"
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Router } from "@reach/router"
 import {Navbar, Nav, Image} from 'react-bootstrap';
 import './styles/navBar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,6 +20,7 @@ import TermsConditions from '../components/TermsConditions/TermsConditions';
 import PrivacyConditions from '../components/TermsConditions/PrivacyConditions';
 import AdsWithUs from '../components/AdsWithUs/AdsWithUs';
 import LastPost from '../components/Post/LastPost';
+import PrivateRoute from './PrivateRoute';
 
 const IndexPage = () =>{
 
@@ -69,12 +71,12 @@ return (
     </div>): 
     (
     <>
-      <SEO title="Home" />
-      <Navbar bg={navBarTheme} variant={navBarTheme} fixed="top" expand="lg">
-        <Navbar.Brand className="ms-2"><Link to="/"><Image src={logo} width="150" fluid /></Link></Navbar.Brand>
+      <SEO title="Agustirri" />
+      <Navbar bg={navBarTheme} variant={navBarTheme} className="p-1" fixed="top" expand="lg">
+        <Navbar.Brand><Link to="/"><Image className="mt-3" src={logo} width="150" fluid /></Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto fontBold fw-bolder">
+          <Nav className="fontBold fw-bolder">
             {postsTypes.map((x, index) =>{
                 return (<Nav.Link key={index} className="socialNetworkPost rounded" href={"/"+removeAccents(decode_utf8(x.name.replace(/\s/g, '')).toLowerCase())+"/"}>{decode_utf8(x.name)}</Nav.Link>);
             })}
@@ -84,22 +86,22 @@ return (
 
       <div className="flex-shrink-0 main-container content">
         <main>
-          <Router>
-            <Switch>
-              <Route exact path='/' component={Main} />
-              <Route path="/creatives" component={Posts} />
-              <Route path="/holaCreativo" component={NewProfile} />
-              <Route path="/profile" component={Profile} />
-              <Route path="/terminosycondiciones" component={TermsConditions} />
-              <Route path="/avisodeprivacidad" component={PrivacyConditions} />
-              <Route path="/anunciateconnosotros" component={AdsWithUs} />
-              <Route path="/loultimo" component={LastPost} />
+          <Router basepath="/">
+            <PrivateRoute path='/' component={Main} />
+            <PrivateRoute path="/creatives/" component={Posts} />
+            <PrivateRoute path="/holaCreativo/" component={NewProfile} />
+            <PrivateRoute path="/profile/" component={Profile} />
+            <PrivateRoute path="/terminosycondiciones/" component={TermsConditions} />
+            <PrivateRoute path="/avisodeprivacidad/" component={PrivacyConditions} />
+            <PrivateRoute path="/anunciateconnosotros/" component={AdsWithUs} />
+            <PrivateRoute path="/loultimo/" component={LastPost} />
               {postsTypes.map((x, index) =>{
-                return (<Route key={index} path={"/"+removeAccents(decode_utf8(x.name.replace(/\s/g, '')).toLowerCase())+"/:id?/:titulo?"} render={(props) => (
+                console.log(x);
+                return (<PrivateRoute key={index} path={"/"+removeAccents(decode_utf8(x.name.replace(/\s/g, '')).toLowerCase())+"/:id?/:titulo?"} render={(props) => (
                   <Principal {...props} idType={x.id_post_type} type={x.name} />
                 )} />);
               })}
-            </Switch>    
+
           </Router>
         </main>
       </div>

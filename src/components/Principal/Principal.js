@@ -8,7 +8,7 @@ import PostsType from '../Post/PostsType';
 const Principal = (props) => {
     const { id, titulo } = useParams();
     const history = useHistory();
-    console.log("aqui",props);
+    console.log("aqui");
     if(id === undefined || titulo === undefined){
         return (
             <div>

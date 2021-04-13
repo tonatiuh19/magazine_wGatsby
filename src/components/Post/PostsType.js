@@ -30,13 +30,6 @@ const PostsType = (props) => {
                 </div>
             ) 
             : (<>
-                <Helmet>
-                    <meta property="og:url"                content={window.location.href} />
-                    <meta property="og:type"               content="article" />
-                    <meta property="og:title"              content={decode_utf8(props.type)} />
-                    <meta property="og:description"        content={"Todo lo relevante referente a "+decode_utf8(props.type)} />
-                    <meta property="fb:app_id"              content="455096692464855" />
-                </Helmet>
                 <div className="col-sm-12 bg-dark">
                     <div className="row p-5 text-white text-center">
                         <div className="col-sm-12">

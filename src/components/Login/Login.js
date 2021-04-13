@@ -3,6 +3,7 @@ import './styles/login.css';
 import {signIn} from '../../apiFunctions/apiFunctions';
 import { useHistory, Link } from "react-router-dom";
 import Loading from '../../resources/Loading/Loading';
+import { navigate } from "gatsby"
 
 const Login = (props) => {
     const [email, setEmail] = useState("");
@@ -26,7 +27,8 @@ const Login = (props) => {
                         setErrorMessage(x);
                     }else if (Array.isArray(x)){
                         localStorage.setItem("08191993", x[0].id_user)
-                        history.push("/creatives/");
+                        //history.push("/creatives/");
+                        navigate("/creatives/");
                         handleChange(false);
                     }else{
                         setError(true);
@@ -53,7 +55,8 @@ const Login = (props) => {
     const session = () => {
         const loggedInUser = localStorage.getItem("08191993");
         if (loggedInUser) {
-            history.push("/creatives/");
+            //history.push("/creatives/");
+            navigate("/creatives/");
             handleChange(false);
         }
     };
