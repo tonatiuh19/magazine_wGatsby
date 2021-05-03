@@ -11,9 +11,9 @@ import Layout from '../components/layout';
 
 const IndexPage = () =>{
   return (
-    <Layout>
-      <Main></Main>
-    </Layout>
+    <Router forceRefresh={true}>
+      <App></App>
+    </Router>
   );
 } 
 

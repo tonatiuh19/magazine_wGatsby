@@ -10,6 +10,13 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import LogoWhite from '../resources/images/Logo/logo_white.png';
 import LogoBlack from '../resources/images/Logo/logo_black.png';
+import Footer from '../components/Footer/Footer';
+import {getPostsTypesNavBar} from '../apiFunctions/apiFunctions';
+import Loading from '../resources/Loading/Loading';
+import SEO from "../components/seo";
+import {Navbar, Nav, Image} from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import { Router } from "@reach/router"
 
 import Header from "./header"
 import "./layout.css"
@@ -32,7 +39,7 @@ const Layout = ({ children }) => {
   useEffect(() => {
     getPostsTypesNavBar().then((y) => {
       setPostsTypes(y);
-  }).finally(() => setLoading(false));
+    }).finally(() => setLoading(false));
   }, []);
 
   const listener = () => {
